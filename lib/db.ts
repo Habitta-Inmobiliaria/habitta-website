@@ -1,6 +1,6 @@
 import mysql from "mysql2/promise";
 
-const sslEnabled = process.env.NODE_ENV === "production";
+const sslEnabled = process.env.DB_SSL === "true";
 
 export const db = mysql.createPool({
   host: process.env.DB_HOST,
