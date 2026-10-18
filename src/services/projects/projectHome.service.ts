@@ -31,7 +31,8 @@ export class ProjectHomeService {
     const query = new URLSearchParams({
       numberProjects: String(params.numberProjects),
     });
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+    const baseUrl =
+      process.env.INTERNAL_API_URL ?? process.env.NEXT_PUBLIC_API_URL;
     const url = baseUrl
       ? `${baseUrl}/api/projects/home/${endpoint}?${query.toString()}`
       : `/api/projects/home/${endpoint}?${query.toString()}`;

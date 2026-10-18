@@ -76,7 +76,8 @@ export class ProjectService {
       isAdmin: isAdmin ? "1" : "0",
     });
 
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+    const baseUrl =
+      process.env.INTERNAL_API_URL ?? process.env.NEXT_PUBLIC_API_URL;
     const url = baseUrl
       ? `${baseUrl}/api/projects/${id}?${query.toString()}`
       : `/api/projects/${id}?${query.toString()}`;
