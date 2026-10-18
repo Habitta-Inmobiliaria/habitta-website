@@ -1,0 +1,16 @@
+node_modules
+.next
+.git
+.gitignore
+.eslintrc.json
+.github
+.codex
+AGENTS.md
+.env
+.env.*
+*.log
+coverage
+out
+build
+.DS_Store
+tsconfig.tsbuildinfo

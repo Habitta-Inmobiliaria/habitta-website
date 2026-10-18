@@ -1,0 +1,3 @@
+habitta.prometeondev.com {
+    reverse_proxy habitta-web:3000
+}

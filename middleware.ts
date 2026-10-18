@@ -7,8 +7,52 @@ import type { AppJWT } from "./src/shared/auth/jwt";
 import { Permission } from "./src/modules/auth/domain/Permission";
 import { PROTECTED_ROUTES } from "./src/config/protectedRoutes";
 
+const DEMO_PUBLIC_API_PATHS = new Set([
+  "/api/memberships/public",
+  "/api/projects/basic",
+  "/api/projects/home/company",
+  "/api/projects/home/realEstate",
+  "/api/projects/metadata",
+  "/api/realEstate",
+]);
+
+function isDemoPublicApi(pathname: string, method: string) {
+  if (method !== "GET") return false;
+  return (
+    DEMO_PUBLIC_API_PATHS.has(pathname) ||
+    /^\/api\/projects\/[^/]+$/.test(pathname)
+  );
+}
+
+function demoResponse(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+
+  if (pathname.startsWith("/api/")) {
+    return isDemoPublicApi(pathname, req.method)
+      ? NextResponse.next()
+      : NextResponse.json(
+          { error: "Esta operación no está disponible en la demo pública." },
+          { status: 404 }
+        );
+  }
+
+  return withPath(NextResponse.redirect(new URL("/", req.url)), pathname);
+}
+
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
+
+  if (process.env.DEMO_MODE === "true") {
+    if (
+      pathname.startsWith("/api/") ||
+      pathname.startsWith("/admin") ||
+      pathname.startsWith("/usuario") ||
+      pathname.startsWith("/auth") ||
+      pathname.startsWith("/login")
+    ) {
+      return demoResponse(req);
+    }
+  }
 
   if (pathname.startsWith("/login")) {
     const redirectUrl = req.nextUrl.clone();
@@ -129,6 +173,7 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
+    "/api/:path*",
     "/admin/:path*",
     "/usuario/:path*",
     "/auth/:path*",

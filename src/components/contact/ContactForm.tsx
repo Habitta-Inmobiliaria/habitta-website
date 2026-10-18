@@ -7,6 +7,17 @@ export function ContactForm() {
   const { formData, errors, isSubmitting, handleChange, handleSubmit } =
     useContactForm();
 
+  if (process.env.NEXT_PUBLIC_DEMO_MODE === "true") {
+    return (
+      <div className="rounded-lg border border-client-accent/40 bg-white/5 p-5 text-client-text">
+        <p className="text-base leading-relaxed">
+          Esta demo es informativa. Para conocer disponibilidad o solicitar
+          asesoría, utiliza los canales de contacto públicos de Habitta.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <form
       className="space-y-4"

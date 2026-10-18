@@ -109,6 +109,8 @@ export function ContactFormSection({
     default: "relative w-80 sm:w-96 mx-auto",
   };
 
+  const isDemo = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
+
   return (
     <>
       {isLargeScreen && formState === "fixed" && (
@@ -126,26 +128,35 @@ export function ContactFormSection({
           Te llamamos
         </h2>
 
-        <p className="mb-4 text-center text-sm text-client-primary">
-          Déjanos tus datos y pronto estaremos en contacto.
-        </p>
+        {isDemo ? (
+          <p className="mb-4 text-center text-sm leading-relaxed text-client-primary">
+            Esta demo es informativa. Para consultar disponibilidad, utiliza
+            WhatsApp o los canales públicos de Habitta.
+          </p>
+        ) : (
+          <>
+            <p className="mb-4 text-center text-sm text-client-primary">
+              Déjanos tus datos y pronto estaremos en contacto.
+            </p>
 
-        <ContactForm
-          name={name}
-          email={email}
-          phone={phone}
-          setName={setName}
-          setEmail={setEmail}
-          setPhone={setPhone}
-        />
+            <ContactForm
+              name={name}
+              email={email}
+              phone={phone}
+              setName={setName}
+              setEmail={setEmail}
+              setPhone={setPhone}
+            />
 
-        <button
-          onClick={handleSubmit}
-          disabled={isSubmitting}
-          className="mt-4 w-full rounded-md border py-2 font-semibold text-white bg-client-accentLight hover:bg-client-accentHover"
-        >
-          {isSubmitting ? "Enviando..." : "Contáctame"}
-        </button>
+            <button
+              onClick={handleSubmit}
+              disabled={isSubmitting}
+              className="mt-4 w-full rounded-md border py-2 font-semibold text-white bg-client-accentLight hover:bg-client-accentHover"
+            >
+              {isSubmitting ? "Enviando..." : "Contáctame"}
+            </button>
+          </>
+        )}
 
         <Link
           href={`https://wa.me/57${phoneNumber.replace(
