@@ -37,7 +37,7 @@ export class ProjectHomeService {
       : `/api/projects/home/${endpoint}?${query.toString()}`;
 
     return apiClient.get<GetHomeProjectsResponse>(url, {
-      next: { revalidate: 60 },
+      cache: "no-store",
     });
   }
 }

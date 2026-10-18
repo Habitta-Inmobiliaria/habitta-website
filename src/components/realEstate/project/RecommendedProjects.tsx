@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { formatNumber } from "@/utils/formatters";
 
 interface Project {
   id: number;
@@ -65,7 +66,7 @@ export function RecommendedProjects({
                 Precio desde
               </p>
               <p className="text-base font-bold" style={{ color: "#8B4513" }}>
-                ${project.price.toLocaleString()} COP
+                ${formatNumber(project.price)} COP
               </p>
             </div>
           </div>

@@ -6,6 +6,7 @@ import Image from "next/image";
 import clsx from "clsx";
 import { X, Edit, Trash2, User } from "lucide-react";
 import type { ProjectMedia } from "@/src/interfaces";
+import { formatNumber } from "@/utils/formatters";
 
 interface ProjectCardAdminProps {
   id: number;
@@ -112,7 +113,7 @@ export function ProjectCardAdmin({
 
             {price && (
               <div className="absolute left-2 top-2 z-50 rounded-full bg-black bg-opacity-75 px-2 py-1 text-sm text-white">
-                ${price.toLocaleString()}
+                ${formatNumber(price)}
               </div>
             )}
 

@@ -5,6 +5,7 @@ import type { LatLngBounds, Map as LeafletMap } from "leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
+import { formatNumber } from "@/utils/formatters";
 
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
@@ -166,7 +167,7 @@ export function LeafletProjectsMap({
       {markers.map((marker) => {
         const html =
           markerContent?.(marker) ??
-          `<div class="inline-flex w-max items-center justify-center whitespace-nowrap rounded-full bg-premium-primary px-3 py-1 text-sm font-semibold text-white transition-all duration-300 ease-in-out hover:bg-premium-primaryDark">$${marker.price?.toLocaleString()}</div>`;
+          `<div class="inline-flex w-max items-center justify-center whitespace-nowrap rounded-full bg-premium-primary px-3 py-1 text-sm font-semibold text-white transition-all duration-300 ease-in-out hover:bg-premium-primaryDark">$${marker.price === null || marker.price === undefined ? "" : formatNumber(marker.price)}</div>`;
 
         return (
           <Marker

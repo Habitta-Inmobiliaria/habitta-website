@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { Membership } from "@/src/interfaces";
 import { EpaycoButton } from "@/src/components/memberships";
+import { formatNumber } from "@/utils/formatters";
 
 interface MembershipPaymentModalProps {
   membership: Membership;
@@ -86,7 +87,7 @@ export function MembershipPaymentModal({
             <p className="text-sm text-gray-600">
               Total a pagar (IVA incluido):{" "}
               <span className="font-semibold text-client-primary">
-                ${finalPrice.toLocaleString()}
+                ${formatNumber(finalPrice)}
               </span>
             </p>
           </div>

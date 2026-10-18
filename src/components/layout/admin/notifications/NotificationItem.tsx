@@ -37,7 +37,10 @@ export function NotificationItem({
           {notification.userEmail}
         </p>
         <p className="text-xs text-premium-textSecondary">
-          {new Date(notification.date).toLocaleString()}
+          {new Date(notification.date).toLocaleString("es-CO", {
+            dateStyle: "short",
+            timeStyle: "short",
+          })}
         </p>
       </div>
 

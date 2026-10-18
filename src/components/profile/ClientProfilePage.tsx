@@ -13,7 +13,7 @@ const ProfileForm = dynamic(
   () => import("./ProfileForm").then((mod) => mod.ProfileForm),
   {
     ssr: false,
-  }
+  },
 );
 
 interface ProfileUpdateInput {
@@ -80,7 +80,7 @@ export function ClientProfilePage() {
                 birthdate: birthdate ?? prev.birthdate,
                 gender: nextGender ?? prev.gender,
               }
-            : prev
+            : prev,
         );
       }
     } finally {
@@ -131,7 +131,7 @@ export function ClientProfilePage() {
         {passwordSuccess && (
           <Alert
             type="success"
-            message="Contrase?a actualizada correctamente"
+            message="Contraseña actualizada correctamente"
           />
         )}
 

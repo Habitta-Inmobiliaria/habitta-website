@@ -5,6 +5,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import Image from "next/image";
 import type { ProjectMedia } from "@/src/interfaces";
+import { formatNumber } from "@/utils/formatters";
 
 interface ProjectCardProps {
   id: number;
@@ -86,7 +87,7 @@ export function ProjectCard({
 
             {price && (
               <div className="absolute left-2 top-2 z-50 rounded-full bg-black bg-opacity-75 px-2 py-1 text-sm text-white">
-                ${price.toLocaleString()}
+                ${formatNumber(price)}
               </div>
             )}
 

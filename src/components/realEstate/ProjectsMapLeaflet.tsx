@@ -6,6 +6,7 @@ import { Plus, Minus, LocateFixed } from "lucide-react";
 import type { ProjectView } from "@/src/interfaces";
 import { PropertyCard } from "@/src/components/realEstate";
 import { LeafletProjectsMap } from "@/src/components/shared";
+import { formatNumber } from "@/utils/formatters";
 
 interface ProjectsMapLeafletProps {
   projects: ProjectView[];
@@ -92,7 +93,7 @@ export function ProjectsMapLeaflet({
 
   const markerContent = (marker: { price?: number | null }) => `
     <div class="inline-flex w-max items-center justify-center whitespace-nowrap bg-client-accent hover:bg-client-accentHover border border-client-textSecondary hover:scale-105 focus:scale-105 focus:bg-client-accentLight text-client-white font-semibold py-1 px-3 rounded-full text-sm transition-all duration-300 ease-in-out">
-      $${marker.price?.toLocaleString()}
+      $${marker.price === null || marker.price === undefined ? "" : formatNumber(marker.price)}
     </div>
   `;
 

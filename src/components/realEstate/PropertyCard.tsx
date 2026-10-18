@@ -7,6 +7,7 @@ import Image from "next/image";
 import { X } from "lucide-react";
 import { ProjectMedia } from "@/src/interfaces";
 import { ProjectCardActions } from "./ProjectCardActions";
+import { formatNumber } from "@/utils/formatters";
 
 interface PropertyCardProps {
   id: number;
@@ -121,7 +122,7 @@ export function PropertyCard({
 
           {price && (
             <div className="absolute left-2 top-2 z-10 rounded-full bg-black bg-opacity-75 px-2 py-1 text-sm text-white">
-              ${price.toLocaleString()}
+              ${formatNumber(price)}
             </div>
           )}
 
