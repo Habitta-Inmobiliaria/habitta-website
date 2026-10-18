@@ -9,7 +9,7 @@ export function Header() {
     <header className="fixed left-0 top-0 z-50 w-full h-12">
       <div className="max-w-[1400px] mx-auto flex items-center justify-between px-2 lg:px-4 py-4">
         <div className="flex-shrink-0">
-          <Logo />
+          <Logo variant="wordmark" />
         </div>
 
         <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2">
