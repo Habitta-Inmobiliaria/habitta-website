@@ -1,6 +1,7 @@
 "use client";
 
-import { ClientFormInput, ClientFormTextArea } from "@/src/components/shared";
+import { ClientFormInput } from "@/src/components/shared/form/client/ClientFormInput";
+import { ClientFormTextArea } from "@/src/components/shared/form/client/ClientFormTextArea";
 import { useContactForm } from "@/src/hooks/contact";
 
 export function ContactForm() {

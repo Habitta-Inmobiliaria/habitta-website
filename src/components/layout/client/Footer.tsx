@@ -1,12 +1,10 @@
 import Link from "next/link";
 import { BRAND } from "@/src/config";
-import {
-  InstagramIcon,
-  TikTokIcon,
-  WhatsAppIcon,
-  XIcon,
-  YouTubeIcon,
-} from "@/src/components/shared";
+import { InstagramIcon } from "@/src/components/shared/icons/InstagramIcon";
+import { TikTokIcon } from "@/src/components/shared/icons/TikTokIcon";
+import { WhatsAppIcon } from "@/src/components/shared/icons/WhatsAppIcon";
+import { XIcon } from "@/src/components/shared/icons/XIcon";
+import { YouTubeIcon } from "@/src/components/shared/icons/YouTubeIcon";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
